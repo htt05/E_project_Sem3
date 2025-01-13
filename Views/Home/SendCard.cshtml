@@ -1,0 +1,204 @@
+﻿@model E_project.Models.Card
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "SendCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var path = Context.Request.Path;
+}
+
+<div class="content_area">
+
+    <div class="content_top_banner cards_bnr">
+        <h2 align="left" class="page_title">Send Card</h2>
+    </div>
+    <ul class="breadcrumb bgcol">
+        <li><a href="/home">Home</a></li>
+        <li><a href="">Send Card</a></li>
+    </ul>
+
+    <div class="clearfix"></div>
+
+
+    <div class="send_card_page" style="padding:40px;">
+
+        <!-- Order Area start-->
+        <div class="order_tab_area">
+            <div id="order_tab">
+                <ul>
+                    <li>Select Title</li>
+                    <li>Select Messages</li>
+                    <li>Select Email</li>
+                    <li>Done</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- Order Area End-->
+        <!-- Send Card Left Start -->
+        <div class="col-md-3">
+            <div class="ecard_preview_mne">
+                <h1>eCard Preview</h1>
+
+                <div class="ecard_preview">
+                    <div class="ecard_area">
+                        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox" style="margin:0px;">
+                            
+                            @if (HttpContextAccessor.HttpContext.Session.GetString("ImageEditCard")!=null)
+                            {
+                                <img src="/images/card/@HttpContextAccessor.HttpContext.Session.GetString("ImageEditCard")" alt="@HttpContextAccessor.HttpContext.Session.GetString("ImageEditCard")" id="Imgbox">
+                            }
+                            else
+                            {
+                                <img src="/images/card/@Model.Image" alt="@Model.CardName" id="Imgbox">
+                            }
+                        </a>
+                    </div>
+                </div>
+                <div class="starrate">
+                    <div id="tutorial-3579">
+                        <input type="hidden" name="rating" id="rating" value="53369" />
+                        <ul onMouseOut="resetRating(3579);" style="text-align:center;">
+                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                            <ul>
+                    </div>
+                    <div align="center" id="rating_Response_3579"></div>
+                    <div align="center" id="resData_3579"><strong>53369</strong>/5 (1462 votes cast)</div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Send Card Left End -->
+        <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="z-index:10000;">
+            <div class="modal-dialog">
+                <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="#" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Send Card Right Start -->
+        <div class="col-md-9">
+            <!--CONTANT START-->
+            <div class="row">
+                <form asp-action="SendCard" name="frmSendGreeting" method="post" autocomplete="off" enctype="multipart/form-data" id="sendCardForm">
+                    <div class="form-box">
+                        <div class="form-body">
+                            <div class="row-fluid send_mar" id="emailInputs">
+                                @if (HttpContextAccessor.HttpContext.Session.GetString("ImageEditCard") != null)
+                                {
+                                    <input type="hidden" value="@HttpContextAccessor.HttpContext.Session.GetString("ImageEditCard")" name="image" />
+                                }
+                                else
+                                {
+                                    <input type="hidden" value="@Model.Image" name="image" />
+                                }
+                                <div class="col-md-12" id="email-input-container">
+                                    <label>To Email</label>
+                                    <input type="email" name="email[]" class="form-control" placeholder="Enter Email receive" />
+                                    <button type="button" id="addEmailButton">Add more email receive</button><br><br>
+                                    <span class="text-danger">@ViewBag.ErrorEmail</span>
+                                </div>
+                            </div>
+                            <div class="row-fluid send_mar">
+                                <div class="col-md-12">
+                                    <label>Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Title"/>
+                                    <span class="text-danger">@ViewBag.ErrorTitle</span>
+                                </div>
+                            </div>
+                            <div class="row-fluid send_mar">
+                                <div class="col-md-12">
+                                    <label>Message Section</label>
+                                    <select name="template_message" class="form-control" id="e_select_message" onchange="changeMessage()">
+                                        <option value="0">--- Browse Messages ---</option>
+                                        <option value="181">Its the day of celebration and glorification</option>
+                                        <option value="182">Life should be great rather than long. Wish you a very Happy New Year</option>
+                                        <option value="183">The progress of a community is measured by the degree of progress which women have achieved. Wish you a very Happy New Year</option>
+                                        <option value="184">We are because he was. Happy New Year !</option>
+                                        <option value="185">A great man is different from an eminent one in that he is ready to be the servant of the society.Happy New Year !</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row-fluid send_mar">
+                                <div class="col-md-12">
+                                    <label>Custom Message (<a href="http://www.google.com/inputtools/try/" target="_blank">Typing in other languages</a>) </label>
+                                    <textarea placeholder="Enter Custom Message Here" class="form-control" name="message" onkeydown="limitText(this.form.message,&#39;countdown&#39;,300);" onkeyup="limitText(this.form.message,&#39;countdown&#39;,300);" rows="3" id="e_custom_message" required></textarea>
+                                </div>
+                                <p style="border:1px solid #f00;padding:5px;margin:5px;border-radius:10px;float:right;">* <span id="countdown">300</span> characters remaining</p>
+                            </div>
+                            <!--<input name="message" type="hidden" id="msg">-->
+
+
+                            <div id="res"> </div>
+                            <input type="hidden" name="csrf_token" value="42490585695188614015112415779119" />
+                            <div class="contact-btn"><button type="submit" name="sbmt_prsnl" value="submit_personalize" class="button red bigrounded red_submit">Send</button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p style="display: none;">
+                <audio id="audio1" tabindex="0" controls type="audio/mpeg" preload="" loop hidden="">
+                    <source id="audiochange" type="audio/mp3" src="#">
+                    Sorry, your browser does not support HTML5 audio.
+                </audio>
+            </p>
+            <!--CONTANT END-->
+
+
+        </div>
+    </div>
+    <!-- Send Card Right Start -->
+    <div class="clearfix"></div>
+</div>
+
+@section Scripts{
+    <script>
+        document.getElementById('addEmailButton').addEventListener('click', function () {
+            // Tạo ô nhập email mới khi nhấn nút "Thêm email"
+            const emailInputsContainer = document.getElementById('emailInputs');
+
+            // Tạo div chứa input mới
+            const nextEmailContainer = document.createElement('div');
+            nextEmailContainer.classList.add('email-input-container');
+            nextEmailContainer.classList.add('col-md-12');
+
+            // Tạo nhãn cho email mới
+            const nextEmailLabel = document.createElement('label');
+            nextEmailLabel.textContent = 'To Email';
+            nextEmailContainer.appendChild(nextEmailLabel);
+
+            // Tạo input mới cho email
+            const nextEmailInput = document.createElement('input');
+            nextEmailInput.type = 'email';
+            nextEmailInput.name = 'email[]';
+            nextEmailInput.classList.add('form-control');  
+            nextEmailInput.placeholder = "Enter Email receive";  
+            nextEmailContainer.appendChild(nextEmailInput);
+
+            // Thêm ô nhập email mới vào form
+            emailInputsContainer.appendChild(nextEmailContainer);
+
+            // Di chuyển con trỏ đến ô nhập email mới
+            nextEmailInput.focus();
+        });
+    </script>
+
+    <script>
+        function changeMessage(){
+            var selectElement = document.getElementById("e_select_message");
+
+            // Lấy văn bản của option đã chọn
+            var selectedText = selectElement.options[selectElement.selectedIndex].text;
+            document.getElementById("e_custom_message").value = selectedText;
+        }
+    </script>
+}

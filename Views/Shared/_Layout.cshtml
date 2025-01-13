@@ -1,0 +1,477 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    var path = Context.Request.Path;
+}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from egreetings.gov.in/cards-Ambedkar+Jayanti-23.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Dec 2024 07:41:52 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"> -->
+    <meta itemprop="name" content="Privay Policy | eGreetings Portal" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta itemprop="description" content="Send Greeting Card Online to your friends and loved ones." />
+    <meta property="og:image" content="/user/assets/images/greetings-logo.png" ; />
+    <meta property="og:image:secure_url" content="/user/assets/images/greetings-logo.png" ; />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:title" content="Privay Policy | eGreetings Portal" />
+    <meta property="og:description" content="Send Greeting Card Online to your friends and loved ones." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://egreetingsstaging.nic.in/" ; />
+    <title>eGreetings Portal</title>
+    <link rel="shortcut icon" href="/user/assets/images/eGreetings_icon.png">
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/bs-tags.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/hover-effect.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/slide-show.css" />
+    <link rel="stylesheet" type="text/css" href="/user/cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/page.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/fonts/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/winner.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/arch.css" />
+    <link rel="stylesheet" type="text/css" href="/sweetalert/sweetalert2.css" />
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/manage-dataTable.css" />
+    <script type="text/javascript" src="/user/assets/js/modernizr.custom.29473.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jquery_3_7_0.min.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jssor.slider-22.2.13.min.js"></script>
+    <script type="text/javascript" src="/user/assets/js/slider.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jquery_3_7_0.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/user/assets/js/jquery.accordion.js"></script>
+    <script type="text/javascript" src="/user/assets/js/bootstrap-typeahead.js"></script>
+</head>
+
+
+<body>
+    <div class="container-flude" style="padding: 0 !important;">
+        <div class="overlay-screen"></div>
+        <div class="wrapper">
+            <!-- Header Start-->
+            <header>
+                <div class="header_top_area">
+                    <div class="container">
+                        <div class="header_top_left">
+                            <a href="#" title="Government of Vietname" target="_blank"><span class="govt">GOVERNMENT OF VIETNAM</span></a>
+                        </div>
+                        <div class="header_top_right">
+                            <ul>
+                                <li class="twitter"><a href=""><i class="fa fa-twitter"></i></a></li>
+                                <li class="facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
+                                
+                                @if (HttpContextAccessor.HttpContext.Session.GetString("accountName") == null)
+                                {
+                                    <li class="login"><a href="/home/login"><i class="fa fa-sign-in"></i>&ensp;Login</a></li>
+                                    <li class="login"><a href="/home/register"><i class="fa fa-user-o"></i>&ensp;Register</a></li>
+                                }
+                                else
+                                {
+                                    <li class="wheel"><a href=""><i class="fa fa-history"></i>&ensp;History</a></li>
+                                    <li class="login"><a href=""><i class="fa fa-user-o"></i>&ensp;Hello @HttpContextAccessor.HttpContext.Session.GetString("accountName")</a></li>
+                                    <li class="login"><a href="/home/logout"><i class="fa fa-sign-in"></i>&ensp;Logout</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-2">
+                    <div class="container second-header">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-6"><div class="greeting-logo"><a href="/home"><img src="/user/assets/images/greetings-logo.png" alt="eGreetings logo"></a></div></div>
+                            <div class="col-md-9 col-sm-6 col-xs-6 main-menu">
+                                <nav class="applePie">
+                                    <li class="srch mob-sideNav" id="sideNav"><i class="fa fa-bars" onclick="sideNav()"></i></li>
+                                    <ul id="nav">
+                                        <li class="parent-li nav-1">
+                                            <a href="/home/cards/Celebration">celebration</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("celebration"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="parent-li nav-2">
+                                            <a href="/home/cards/Festivals">festivals</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("festivals"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="parent-li nav-3">
+                                            <a href="/home/cards/Glimpses of Vietnam">glimpses of vietnam</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("glimpses of vietnam"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="parent-li nav-4">
+                                            <a href="/home/cards/Heritage">heritage</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("heritage"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="parent-li nav-5">
+                                            <a href="/home/cards/Ministry">ministry</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("ministry"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="parent-li nav-6">
+                                            <a href="/home/cards/Miscellaneous">miscellaneous</a>
+                                            <ul>
+                                                @if (ViewBag.Categories != null)
+                                                {
+                                                    @foreach (var category in ViewBag.Categories)
+                                                    {
+                                                        @if (category.ParentCategory.ToLower().Equals("miscellaneous"))
+                                                        {
+                                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="srch" id="srch"><i class="fa fa-search"></i></li>
+                                        <li class="srch" id="sideNav"><i class="fa fa-bars" onclick="sideNav()"></i></li>
+                                    </ul>
+                                    <!-- <ul>
+                                       <li><span><i class="fa fa-search" aria-hidden="true"></i></span></li>
+                                    </ul> -->
+                                </nav>
+                            </div>
+                        </div>
+                        <form asp-action="Search">
+                            <div class="search_area" id="srchData">
+                                <input type="text" class="form-control" id="searchCat" name="cardName" placeholder="Search Here">
+                                <button type="submit">
+                                    <i class="glyphicon glyphicon-search" style="margin-right: 10px; float: right; margin-top: -25px;"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- 3.0 -->
+            </header>
+            <div class="side-header">
+                <i class="fa fa-times" id="closeNav"></i>
+                <div class="side-bar">
+                    <ul class="side-nav">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/home/about">About eGreetings</a></li>
+                        <li><a href="/home/contact?path=/home/contact">Feedback</a></li>
+                    </ul>
+                    <ul class="side-name-2">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Celebration">Celebration</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("celebration"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Festivals">festivals</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("festivals"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Glimpses of Vietnam">glimpses of vietnam</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("glimpses of vietnam"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Heritage">heritage</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("heritage"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Ministry">ministry</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("ministry"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="/home/cards/Miscellaneous">miscellaneous</a>
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (var category in ViewBag.Categories)
+                                    {
+                                        @if (category.ParentCategory.ToLower().Equals("miscellaneous"))
+                                        {
+                                            <li><a href="/home/cards/@category.ParentCategory?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                        }
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Header End-->
+            <div class="clearfix"></div>
+            <!-- Menu Start-->
+            <!-- Menu End-->
+            <div class="clearfix"></div>
+
+            <!-- Content Area Strat-->
+            @RenderBody()
+            <!-- Content Area End-->
+            <div class="clearfix"></div>
+            <!-- popup window Start-->
+            <div class="container">
+                <div class="modal fade modal-width" id="shareModal">
+                    <div class="modal-dialog modal-dialog-width">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Share Card</h4>
+                            </div>
+                            <div class="social_login modal-body">
+                                <div class="">
+                                    <a href="#" class="social_box fb">
+                                        <span class="icon"><i class="fa fa-facebook"></i></span>
+                                        <span class="icon_title">Share on Facebook</span>
+                                    </a>
+                                    <a href="#" class="social_box google">
+                                        <span class="icon"><i class="fa fa-twitter"></i></span>
+                                        <span class="icon_title">Share on Twitter</span>
+                                    </a>
+                                    <!--
+                                                      <a href="#" class="social_box whatsapp" onclick="whatsAppCurrentPage()">
+                                                      <span class="icon"><i class="fa fa-whatsapp"></i></span>
+                                                      <span class="icon_title">Share on WhatsApp</span>
+                                                      </a>                 -->
+                                    <!--<a href="#" class="social_box google" onclick="googleCurrentPage()">
+                                       <span class="icon"><i class="fa fa-google-plus"></i></span>
+                                       <span class="icon_title">Share on Google</span>
+                                       </a>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- popup window End-->
+            <script>
+                var card_id = '';
+                function setCardId(grt_id, cat_nm) { card_id = grt_id; card_name = cat_nm }
+                function fbshareCurrentPage() {
+                    var m = card_id; var n = card_name;
+                    var url = "https://https://egreetings.gov.in/customize-" + card_name + "-" + card_id + ".html"; url = url.replace(/ /g, "%20");
+                    window.open("https://www.facebook.com/sharer/sharer.php?u=" + escape(url) + "&t=" + document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600'); return false;
+                }
+
+                function tweetCurrentPage() {
+                    var m = card_id; var n = card_name;
+                    var url = "https://https://egreetings.gov.in/customize-" + card_name + "-" + card_id + ".html"; url = url.replace(/ /g, "%20");
+                    window.open("https://twitter.com/share?url=" + escape(url) + "&text=" + document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600'); return false;
+                }
+
+                function googleCurrentPage() {
+                    var m = card_id; var n = card_name;
+                    var url1 = "https://https://egreetings.gov.in/customize-" + card_name + "-" + card_id + ".html"; url1 = url1.replace(/ /g, "%20");
+                    var url = "https://plus.google.com/share?url=" + url1;
+                    window.open(url, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=400,width=600'); return false;
+                }
+            </script>
+            <!-- Footer Area Start-->
+            <div class="footer_area_main">
+                <div class="footer_area">
+                    <div class="container">
+                        <div class="col-md-4">
+                            <div class="block-block">
+                                <div class="content">
+                                    <a href="http://www.nic.in/" target="_blank" title="NIC Logo" alt="NIC Logo">
+                                        <img src="/user/assets/images/nic_logo.png" title="" alt="NIC Logo">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="designed-by">
+                                <p>
+                                    &copy; Designed, developed and hosted by <a href="http://www.nic.in/" style="color:#abaeb5;cursor:pointer;" target="_blank"><strong style="text-decoration:underline; font-weight:normal;">National Informatics Centre</strong></a> Ministry of Electronics & Information Technology
+                                    Government of India. (74)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="footer_block_one">
+                                <ul>
+                                    <li><a href="/home">Home</a></li>
+                                    <li><a href="/home/about">About Us</a></li>
+                                    <li><a href="/home/login">Login</a></li>
+                                    <li><a href="#">Winners</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="/home/terms">Terms & Conditions</a></li>
+                                    <li><a href="#">Sitemap</a></li>
+                                    <li><a href="/home/contact?path=/home/contact">Contact Us</a></li>
+                                    <li><a href="#" target="_blank">User Manual</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="text_area">
+                                <h4 class="follow-us">Follow Us</h4>
+                                <ul class="social-icon">
+                                    <li class="twitter"><a href="https://www.twitter.com/NICMeity" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="facebook"><a href="https://www.facebook.com/NICIndia" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="facebook"><a href="https://www.linkedin.com/company/national-informatics-centre/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer middle Start-->
+                <div class="footer_middle">
+                    <a class="ad_img trans ext" href="https://transformingindia.mygov.in/" title="Journey of Transforming India
+         ( External Site that opens in a new window)" target="_blank">
+                        Transforming India
+                        <span class="ext"><span class="element-invisible"> </span></span>
+                    </a>
+                    <!--<a class="ad_img news" href="https://newsletter.mygov.in/" title="Newsletter( External Site that opens in a new window)" target="_blank">  Newsletter<span class="ext"><span class="element-invisible"> </span></span></a>-->
+                    <a class="ad_img blog" href="https://blog.mygov.in/" title="blog( External Site that opens in a new window)" target="_blank">  blog<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img invoo" href="https://innovate.mygov.in/" title="Innovate( External Site that opens in a new window)" target="_blank">  innovate<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img s_bharat" href="https://swachhbharat.mygov.in/" title="Swachh Bharat( External Site that opens in a new window)" target="_blank">Swachh Bharat<span class="ext"><span class="element-invisible"> </span></span></a>
+                </div>
+                <!-- Footer middle End-->
+                <!-- Footer bottom Start-->
+                <div class="footer_bottom">
+                    <a class="ad_img di ext" href="http://www.digitalindia.gov.in/" title="Digital India( External Site that opens in a new window)" target="_blank">  Digital India<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img data ext" href="http://data.gov.in/" title="Data Portal (External Site that opens in a new window)" target="_blank">
+                        Data Portal
+                        <span class="ext"><span class="element-invisible"> </span></span>
+                    </a>
+                    <a class="ad_img npi ext" href="http://india.gov.in/" title="NPI (External Site that opens in a new window)" target="_blank">NPI<span class="ext"> <span class="element-invisible"> </span></span></a>
+                    <a class="ad_img deity ext" href="http://meity.gov.in/" title="MeitY (External Site that opens in a new window)" target="_blank">MeitY<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img pm ext" href="http://pmindia.gov.in/" title="PM INDIA (External Site that opens in a new window)" target="_blank">PM INDIA<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img sampark ext" href="https://sampark.gov.in/Sampark/" title="sampark (External Site that opens in a new window)" target="_blank">esampark<span class="ext"><span class="element-invisible"> </span></span></a>
+                    <a class="ad_img mygov ext" href="https://www.mygov.in/" title="MyGov (External Site that opens in a new window)" target="_blank">MyGov<span class="ext"><span class="element-invisible"> </span></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer bottom End-->
+    <!-- Footer Area End-->
+
+    <script src="/user/assets/js/html5shiv.js" type="text/javascript"></script>
+    <script src="/user/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/user/assets/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="/user/assets/js/popupoverlay.js"></script>
+    <script type="text/javascript" src="/user/assets/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/user/assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/user/assets/js/dataTables.bootstrap.min.js"></script>
+    <script src="/user/assets/js/custom_js.js" type="text/javascript"></script>
+    <script src="/user/assets/js/newjs.js" type="text/javascript"></script>
+    <script src="/user/assets/js/bootstrap-tagsinput.js" type="text/javascript"></script>
+    <script src="/sweetalert/sweetalert2.min.js" type="text/javascript"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+<!-- Mirrored from egreetings.gov.in/cards-Ambedkar+Jayanti-23.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Dec 2024 07:44:36 GMT -->
+</html>

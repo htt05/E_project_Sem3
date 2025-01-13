@@ -1,0 +1,51 @@
+﻿@model IEnumerable<E_project.Models.TransactionDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>TransactionDetails</h2>
+<div class="row pb-2 pt-2">
+    <div class="col-6">
+        <span>
+            <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+        </span>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DestinationEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transaction.TransactionId)
+                </td>
+                <td>
+                    @Html.Raw(((item.Status) ? "<span class=\"badge badge-primary\">Enable</span>" : "<span class=\"badge badge-warning\">Disable</span>"))
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TransactionDetailId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TransactionDetailId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TransactionDetailId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

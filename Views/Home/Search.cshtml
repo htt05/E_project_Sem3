@@ -1,0 +1,151 @@
+﻿@model X.PagedList.IPagedList<E_project.Models.Card>
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cardName = ViewData["cardName"];
+    var parentCategory = ViewData["parentCategory"];
+    var path = Context.Request.Path;
+}
+
+<div class="content_area">
+
+
+    <div class="content_top_banner cards_bnr">
+        <h2 align="left" class="page_title">@ViewBag.CategoryName</h2>
+    </div>
+    <ul class="breadcrumb bgcol">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/home/search">Category</a></li>
+    </ul>
+    <div class="clearfix"></div>
+    <!-- Cards Category Area Start-->
+    <div class="cards_page_area">
+
+        <!-- Cards Category left Start-->
+        <div class="col-md-3">
+            <div class="cards_page_left">
+
+                <!-- national days nav Start-->
+                <div class="national_days_nav">
+                    <h1>Category</h1>
+                    <ul>
+                        <li><a href="/home/search?parentCategory=Celebration&cardName=@cardName">Celebration</a></li>
+                        <li><a href="/home/search?parentCategory=Festivals&cardName=@cardName">Festivals</a></li>
+                        <li><a href="/home/search?parentCategory=Glimpses of Vietnam&cardName=@cardName">Glimpses of Vietnam</a></li>
+                        <li><a href="/home/search?parentCategory=Heritage&cardName=@cardName">Heritage</a></li>
+                        <li><a href="/home/search?parentCategory=Ministry&cardName=@cardName">Ministry</a></li>
+                        <li><a href="/home/search?parentCategory=Miscellaneous&cardName=@cardName">Miscellaneous</a></li>
+                    </ul>
+                </div>
+                <!-- national days nav End-->
+
+            </div>
+        </div>
+        <!-- Cards Category left End-->
+        <!-- Cards Category Right Start-->
+        <div class="col-md-9">
+            <div class="cards_page_right">
+                <h1>@parentCategory Cards</h1>
+
+
+                <div class="cards_product_area row" id="cards_product_area">
+                    <!-- Block Area Strat-->
+                    @if (Model.Count != 0)
+                    {
+                        @foreach (var card in Model)
+                        {
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3">
+                                <div class="col-item">
+                                    <div class="photo-11">
+                                        <a href="">
+                                            <img class="img-responsive img-portfolio img-hover" alt="@card.Image | eGreetings Portal" src="/images/card/@card.Image">
+                                        </a>
+                                    </div>
+                                    <div class="info">
+                                        <div class="infomiddle">
+                                            <h2>@card.CardName</h2>
+                                            <span class="info-left">
+                                                <a href="/home/edit-card/@card.CardId?path=/home/edit-card/@card.CardId"><i class="fa fa-pencil-square-o"></i>&nbsp;Edit card</a>
+                                            </span>
+                                            <span class="info-right shareModal-pointer" data-toggle="modal" data-target="#shareModal" onclick="setCardId('3579','Ambedkar Jayanti_1')"><img src="/user/assets/home-images/share1.png"></span>
+                                            <div class="star-ratings">
+                                                <div class="starrate">
+                                                    <div id="tutorial-3579">
+                                                        <input type="hidden" name="rating" id="rating" value="53369" />
+                                                        <ul onMouseOut="resetRating(3579);" style="text-align:center;">
+                                                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                                                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                                                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                                                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                                                            <li class='selected' onmouseover="highlightStar(this,3579);" onmouseout="removeHighlight(3579);" onClick="addRating(this,3579);">&#9733;</li>
+                                                            <ul>
+                                                    </div>
+                                                    <div align="center" id="rating_Response_3579"></div>
+                                                    <div align="center" id="resData_3579"><strong>53369</strong>/5 (1462 votes cast)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="/home/SendCard/@card.CardId?path=/home/SendCard/@card.CardId">
+                                            <div class="btn_area">
+                                                <span class="cstmbtn">
+                                                    <i class="fa fa-paper-plane-o"></i>&ensp;
+                                                    Send eCard
+                                                </span>
+                                            </div>
+                                        </a>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    }
+                    <!-- Block Area End-->
+
+                    <div class="clearfix"></div>
+                    <input type="hidden" id="row_no" value="9">
+                    <input type="hidden" id="cId" value="23">
+                    <input type="hidden" id="cName" value="Ambedkar Jayanti">
+                    <!--<div class="cards_load_more">
+                    <a href="javascript:void(0);">Scroll down to load more...</a>
+                     </div>-->
+                </div>
+
+                <div id="loading" align="center"></div>
+                <div class="pagination_area mt_35 xs_mb_60 wow fadeInUp">
+                    <nav aria-label="Page navigation example">
+                        @if (Model.Count == 0)
+                        {
+                            <p class="text-center alert-danger">NO ITEM HAS NAME @cardName</p>
+                            <div>
+                                <a href="/home/search">Back to List</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                @Html.PagedListPager(Model, page => Url.Action("search", "home", new { page = page, cardName = cardName, parentCategory = parentCategory }),
+                                         new PagedListRenderOptions
+                            {
+                                UlElementClasses = new[] { "pagination", "justify-content-center" },
+                                LiElementClasses = new[] { "page-item" },
+                                PageClasses = new[] { "page-link btn btn-button" }
+                            })
+                            </div>
+                        }
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Cards Category Right End-->
+
+    </div>
+    <!-- Cards Category Area End-->
+    <div class="clearfix"></div>
+</div>
+
+
+
